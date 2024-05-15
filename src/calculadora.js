@@ -29,7 +29,6 @@ function manipulateString(numbers, delimiters) {
   return numbers;
 }
 
-
 function splitStringIntoNumbers(numbers) {
   return numbers.split(/[\n,;-]/).flatMap(part => part.split(',').map(num => parseInt(num, 10)));
 }
