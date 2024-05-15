@@ -6,22 +6,40 @@ function addChains(numbers) {
   const customDelimiterMatch = numbers.match(/^\/\/(\[([^\]]+)\])+/);
 
   if (customDelimiterMatch) {
-    const delimiters = customDelimiterMatch[0].match(/\[([^\]]+)\]/g).map(match => match.slice(1, -1));
-    numbers = numbers.slice(customDelimiterMatch[0].length);
-    // Reemplazar todas las ocurrencias de los delimitadores personalizados por comas
-    delimiters.forEach(customDelimiter => {
-      const escapedDelimiter = customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      numbers = numbers.replace(new RegExp(escapedDelimiter, 'g'), ',');
-    });
+    const delimiters = detectDelimiters(customDelimiterMatch);
+    numbers = manipulateString(numbers, delimiters);
   }
 
-  // Utilizamos una expresión regular con comas y guiones para dividir la cadena en números
-  const nums = numbers.split(/[,\-]/).map(num => parseInt(num, 10));
+  const nums = splitStringIntoNumbers(numbers);
 
-  // Ignorar los números mayores a 1000
-  const filteredNums = nums.filter(num => num <= 1000);
+  const filteredNums = ignoreNumbersGreaterThan1000(nums);
 
-  return filteredNums.reduce((acc, curr) => acc + curr, 0);
+  return sumNumbers(filteredNums);
+}
+
+function detectDelimiters(customDelimiterMatch) {
+  return customDelimiterMatch[0].match(/\[(.*?)\]/g).map(match => match.slice(1, -1));
+}
+
+function manipulateString(numbers, delimiters) {
+  delimiters.forEach(customDelimiter => {
+    const escapedDelimiter = customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    numbers = numbers.replace(new RegExp(escapedDelimiter, 'g'), ',');
+  });
+  return numbers;
+}
+
+
+function splitStringIntoNumbers(numbers) {
+  return numbers.split(/[\n,;-]/).flatMap(part => part.split(',').map(num => parseInt(num, 10)));
+}
+
+function ignoreNumbersGreaterThan1000(nums) {
+  return nums.filter(num => num <= 1000);
+}
+
+function sumNumbers(nums) {
+  return nums.reduce((acc, curr) => acc + curr, 0);
 }
 
 export default addChains;
