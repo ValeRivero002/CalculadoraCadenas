@@ -28,5 +28,8 @@ describe('add', () => {
   it('debería manejar delimitadores de cualquier longitud', () => {
     expect(add('//[***]\n1***2***3')).toBe(6);
   });
+  it('debería manejar múltiples delimitadores', () => {
+    expect(add('//[*][%]\n1*2%3,7-9')).toBe(22);
+  });
 
 });

@@ -3,15 +3,16 @@ function add(numbers) {
     return 0;
   }
   let delimiter = ',';
-  const customDelimiterMatch = numbers.match(/^\/\/\[([^\]]+)\]\n/);
+  const customDelimiterMatch = numbers.match(/^\/\/(\[([^\]]+)\])+/);
 
   if (customDelimiterMatch) {
-    delimiter = customDelimiterMatch[1];
+    const delimiters = customDelimiterMatch[0].match(/\[([^\]]+)\]/g).map(match => match.slice(1, -1));
     numbers = numbers.slice(customDelimiterMatch[0].length);
-    // Escapar caracteres especiales en el delimitador personalizado antes de usarlo en la expresión regular
-    const escapedDelimiter = delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // Reemplazar todas las ocurrencias del delimitador personalizado por comas
-    numbers = numbers.replace(new RegExp(escapedDelimiter, 'g'), ',');
+    // Reemplazar todas las ocurrencias de los delimitadores personalizados por comas
+    delimiters.forEach(customDelimiter => {
+      const escapedDelimiter = customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      numbers = numbers.replace(new RegExp(escapedDelimiter, 'g'), ',');
+    });
   }
 
   // Utilizamos una expresión regular con comas y guiones para dividir la cadena en números
