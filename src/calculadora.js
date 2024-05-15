@@ -2,7 +2,7 @@ function addChains(numbers) {
   if (numbers === '') {
     return 0;
   }
-  let delimiter = ',';
+  let customDelimiter  = ',';
   const customDelimiterMatch = numbers.match(/^\/\/(\[([^\]]+)\])+/);
 
   if (customDelimiterMatch) {
