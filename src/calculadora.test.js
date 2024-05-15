@@ -7,5 +7,7 @@ describe('add', () => {
   it('debería devolver el número mismo para una cadena que contiene un solo número', () => {
     expect(add('2')).toBe(2);
   });
- 
+  it('debería devolver la suma de dos números separados por coma', () => {
+    expect(add('1,2')).toBe(3);
+  });
 });
