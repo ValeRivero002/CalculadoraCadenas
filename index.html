@@ -1,15 +1,19 @@
-<html>
-  <body>
-    <h1>Sumador</h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
-    </form>
-    <div id="resultado-div"></div>
-
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Calculator</title>
+</head>
+<body>
+  <h1>String Calculator</h1>
+  
+  <label for="numberInput">Enter numbers:</label>
+  <input type="text" id="numberInput">
+  <button id="calculateButton">Calculate</button>
+  
+  <p id="result"></p>
+  
+  <script src="presenter.js"></script>
+</body>
 </html>

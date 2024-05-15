@@ -1,15 +1,19 @@
-import sumar from "./sumador";
+// Import the add function from the calculator module
+const { add } = require('./calculator');
 
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
-const div = document.querySelector("#resultado-div");
+// Function to handle the calculation when the button is clicked
+function calculate() {
+  const input = document.getElementById('numberInput').value;
+  const result = add(input);
+  displayResult(result);
+}
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// Function to display the result on the page
+function displayResult(result) {
+  const resultElement = document.getElementById('result');
+  resultElement.textContent = `Result: ${result}`;
+}
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
-
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
-});
+// Add event listener to the calculate button
+const calculateButton = document.getElementById('calculateButton');
+calculateButton.addEventListener('click', calculate);
