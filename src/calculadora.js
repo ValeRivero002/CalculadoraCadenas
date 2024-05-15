@@ -8,8 +8,10 @@ function add(numbers) {
   if (customDelimiterMatch) {
     delimiter = customDelimiterMatch[1];
     numbers = numbers.slice(customDelimiterMatch[0].length);
+    // Escapar caracteres especiales en el delimitador personalizado antes de usarlo en la expresión regular
+    const escapedDelimiter = delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     // Reemplazar todas las ocurrencias del delimitador personalizado por comas
-    numbers = numbers.replace(new RegExp('\\' + delimiter, 'g'), ',');
+    numbers = numbers.replace(new RegExp(escapedDelimiter, 'g'), ',');
   }
 
   // Utilizamos una expresión regular con comas y guiones para dividir la cadena en números
@@ -19,7 +21,6 @@ function add(numbers) {
   const filteredNums = nums.filter(num => num <= 1000);
 
   return filteredNums.reduce((acc, curr) => acc + curr, 0);
-
 }
 
 export default add;
