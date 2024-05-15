@@ -1,4 +1,4 @@
-function add(numbers) {
+function addChains(numbers) {
   if (numbers === '') {
     return 0;
   }
@@ -24,4 +24,4 @@ function add(numbers) {
   return filteredNums.reduce((acc, curr) => acc + curr, 0);
 }
 
-export default add;
+export default addChains;

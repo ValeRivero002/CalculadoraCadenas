@@ -1,0 +1,7 @@
+1. Cambiar el nombre de la funcion a una mas descriptiva
+2. Cambiar el nombre de las varibles
+3. Dividir la funcion general en funciones pequeñas
+4. Manejo de delimitadores personalizados
+5. Utilizar constantes
+6. Mejorar la legibilidad
+7. Manejo de errores en cadenas mal formadas
