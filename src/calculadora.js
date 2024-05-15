@@ -1,3 +1,5 @@
+
+const ESCAPE_REGEX_CHARACTERS = /[.*+?^${}()|[\]\\]/g;
 function addChains(numbers) {
   if (numbers === '') {
     return 0;
@@ -23,11 +25,12 @@ function detectDelimiters(customDelimiterMatch) {
 
 function manipulateString(numbers, delimiters) {
   delimiters.forEach(customDelimiter => {
-    const escapedDelimiter = customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escapedDelimiter = customDelimiter.replace(ESCAPE_REGEX_CHARACTERS, '\\$&');
     numbers = numbers.replace(new RegExp(escapedDelimiter, 'g'), ',');
   });
   return numbers;
 }
+
 
 function splitStringIntoNumbers(numbers) {
   return numbers.split(/[\n,;-]/).flatMap(part => part.split(',').map(num => parseInt(num, 10)));
