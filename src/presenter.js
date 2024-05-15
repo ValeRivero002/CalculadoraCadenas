@@ -1,6 +1,5 @@
 import addChains from "./calculadora.js";
 
-
 // Function to handle the calculation when the button is clicked
 function calculate() {
   const input = document.getElementById('numberInput').value;
@@ -14,6 +13,6 @@ function displayResult(result) {
   resultElement.textContent = `Result: ${result}`;
 }
 
-// addChains event listener to the calculate button
+// add event listener to the calculate button
 const calculateButton = document.getElementById('calculateButton');
-calculateButton.addChainsEventListener('click', calculate);
+calculateButton.addEventListener('click', calculate);

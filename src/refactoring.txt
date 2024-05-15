@@ -3,5 +3,3 @@
 3. Dividir la funcion general en funciones pequeñas
 4. Manejo de delimitadores personalizados
 5. Utilizar constantes
-6. Mejorar la legibilidad
-7. Manejo de errores en cadenas mal formadas
