@@ -22,6 +22,9 @@ describe('add', () => {
   it('debería manejar un delimitador personalizado', () => {
     expect(add('//[;]\n6,3-2;1')).toBe(12);
   });
+  it('debería ignorar los números mayores a 1000', () => {
+    expect(add('2,1001')).toBe(2);
+  });
 
 
 });

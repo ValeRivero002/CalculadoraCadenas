@@ -15,7 +15,11 @@ function add(numbers) {
   // Utilizamos una expresión regular con comas y guiones para dividir la cadena en números
   const nums = numbers.split(/[,\-]/).map(num => parseInt(num, 10));
 
-  return nums.reduce((acc, curr) => acc + curr, 0);
+  // Ignorar los números mayores a 1000
+  const filteredNums = nums.filter(num => num <= 1000);
+
+  return filteredNums.reduce((acc, curr) => acc + curr, 0);
+
 }
 
 export default add;
