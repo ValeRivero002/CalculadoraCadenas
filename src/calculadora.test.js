@@ -16,6 +16,12 @@ describe('add', () => {
   it('debería manejar cadenas con diferentes separadores', () => {
     expect(add('1,2-3')).toBe(6);
   });
+  it('debería manejar un delimitador personalizado', () => {
+    expect(add('//[;]\n6;7;4')).toBe(17);
+  });
+  it('debería manejar un delimitador personalizado', () => {
+    expect(add('//[;]\n6,3-2;1')).toBe(12);
+  });
 
 
 });

@@ -2,10 +2,18 @@ function add(numbers) {
   if (numbers === '') {
     return 0;
   }
-  const separators = [',', '-']; // Lista de separadores permitidos
+  let delimiter = ',';
+  const customDelimiterMatch = numbers.match(/^\/\/\[([^\]]+)\]\n/);
 
-  // Utilizamos una expresión regular para dividir la cadena en números
-  const nums = numbers.split(new RegExp('[' + separators.join('') + ']')).map(num => parseInt(num, 10));
+  if (customDelimiterMatch) {
+    delimiter = customDelimiterMatch[1];
+    numbers = numbers.slice(customDelimiterMatch[0].length);
+    // Reemplazar todas las ocurrencias del delimitador personalizado por comas
+    numbers = numbers.replace(new RegExp('\\' + delimiter, 'g'), ',');
+  }
+
+  // Utilizamos una expresión regular con comas y guiones para dividir la cadena en números
+  const nums = numbers.split(/[,\-]/).map(num => parseInt(num, 10));
 
   return nums.reduce((acc, curr) => acc + curr, 0);
 }
