@@ -1,5 +1,5 @@
-// Import the add function from the calculator module
-const { add } = require('./calculator');
+import add from "./calculadora.js";
+
 
 // Function to handle the calculation when the button is clicked
 function calculate() {

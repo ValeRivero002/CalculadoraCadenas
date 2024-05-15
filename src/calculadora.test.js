@@ -13,5 +13,9 @@ describe('add', () => {
   it('debería devolver la suma de varios números separados por coma', () => {
     expect(add('1,2,3')).toBe(6);
   });
+  it('debería manejar cadenas con diferentes separadores', () => {
+    expect(add('1,2-3')).toBe(6);
+  });
+
 
 });
